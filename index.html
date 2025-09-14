@@ -3,89 +3,249 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Great Cliffs</title>
+  <title>Great Cliffs — Home</title>
+
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-yY7vC2gZkJYQvQYgGgq1cYy6E0r6wZcXk2k5Gm1nqQfU0vQK9m0pJ7W1c8WmVzwpQq2xF+0QK7sQ8zK8a7iVw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <style>
+    /* -------------------------------
+       HEADER (background + overlay)
+       ------------------------------- */
+    #home header {
+      /* use your existing hero image here */
+      background-image: url("images/cliff_ocean.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 320px;
+      position: relative;
+      color: #fff;
+    }
+    /* main header box (logo + nav) floating on top */
+    #home .header-box {
+      background: rgba(0,0,0,0.8);          /* 80% opacity overlay */
+      width: min(960px, 92%);
+      margin: 20px auto 0 auto;             /* center in header */
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      align-items: center;
+      gap: 12px;
+      border-radius: 12px;
+    }
+    /* logo placement */
+    #home .logo {
+      display: inline-block;
+    }
+    #home .logo img {
+      width: 160px;                          /* width only; keeps aspect */
+      height: auto;
+      display: block;
+    }
+
+    /* -------------------------------
+       NAVIGATION
+       ------------------------------- */
+    #home nav ul {
+      list-style: none;                      /* remove bullets */
+      margin: 0;
+      padding: 0;
+      display: flex;                         /* horizontal */
+      gap: 18px;
+      justify-content: flex-end;
+      align-items: center;
+      border-left: 1px solid rgba(255,255,255,0.15); /* faint vertical line */
+      padding-left: 18px;
+    }
+    #home nav a {
+      text-decoration: none;                 /* remove underline */
+      color: #e8eef6;
+      font-weight: 600;
+      letter-spacing: .2px;
+      padding: 6px 4px;
+      transition: color .15s ease, border-color .15s ease;
+      border-bottom: 2px solid transparent;
+    }
+    #home nav a:hover {
+      color: #9ed034;                        /* hover color */
+      border-bottom-color: #9ed034;
+    }
+    /* active button (Home on this page) */
+    #home nav a.active {
+      color: #9ed034;
+      border-bottom-color: #9ed034;
+      cursor: default;
+    }
+
+    /* -------------------------------
+       MAIN AREA (type, color)
+       ------------------------------- */
+    #home main {
+      font-family: Arial, Helvetica, sans-serif;
+      width: min(960px, 92%);
+      margin: 22px auto;
+      line-height: 1.55;
+      color: #333;
+    }
+    #home main h1 {
+      margin: 8px 0 10px;
+      color: #9ed034;                        /* per spec */
+      font-size: clamp(28px, 4vw, 42px);
+    }
+    #home main h2 {
+      margin: 20px 0 8px;
+      color: #222;
+      font-size: clamp(18px, 2.5vw, 24px);
+    }
+    #home main p {
+      margin: 0 0 12px;
+      max-width: 70ch;
+    }
+
+    /* -------------------------------
+       PARTNERS SECTION (logos in circles)
+       ------------------------------- */
+    #home section.partners {
+      width: min(960px, 92%);
+      margin: 24px auto;
+      text-align: center;
+    }
+    #home .partners h2 {
+      margin-bottom: 12px;
+    }
+    #home .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(60px, 1fr));
+      gap: 16px;
+      justify-items: center;
+      align-items: center;
+    }
+    #home .partner {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;                    /* circle */
+      background: #f5f7f9;
+      border: 1px solid #e0e6ee;
+      display: grid;
+      place-items: center;                    /* center logo inside */
+      overflow: hidden;
+    }
+    #home .partner img {
+      width: 70%;                             /* scale down logo */
+      height: 70%;
+      object-fit: contain;
+    }
+
+    /* -------------------------------
+       FOOTER (copyright + social)
+       ------------------------------- */
+    footer {
+      border-top: 1px solid #e3e7ef;
+      margin-top: 28px;
+      padding: 14px 0 48px;                  /* bottom space for disclaimer */
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .footer-inner {
+      width: min(960px, 92%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+    .copyright {
+      color: #667085;
+    }
+    .social {
+      display: flex;
+      gap: 10px;
+    }
+    .social a {
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      text-decoration: none;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .social a:hover { transform: translateY(-1px); filter: brightness(1.1); }
+    .social .facebook { background: #1877f2; }
+    .social .twitter  { background: #1da1f2; }
+    .social .instagram{ background: #e4405f; }
+    .social .youtube  { background: #ff0000; }
+
+    /* Disclaimer pinned to bottom of footer box */
+    .disclaimer {
+      width: min(960px, 92%);
+      margin: 8px auto 0;
+      color: #98a2b3;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-<body>
+
+<body id="home">
   <header>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="activities.html">Activities</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-box">
+      <a class="logo" href="index.html">
+        <img src="images/logo.png" alt="Great Cliffs Logo">
+      </a>
 
-    <!-- Requirement: image below the open <header> tag -->
-    <!-- Replace hero.jpg with an actual image filename from your images folder -->
-    <img src="images/hero.jpg" alt="Scenic cliff view over the ocean" width="1200" height="400">
-
-    <!-- Replace the placeholder <h3> with a logo <img> (scaled down by width only) -->
-    <img src="images/logo.png" alt="Great Cliffs Logo" width="160">
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-<main>
-  <h1>Activities</h1>
-  <!-- Paste this paragraph from content-w1d2.txt -->
-  <p>
-    There are many planned activities at all the cliff sites. Some are scheduled daily, weekly, monthly and yearly.
-    These activities are not however run by the state park and recreational department. They are operated and manage by private vendors but are partners with the state department.
-    Therefore, for schedule inquiries or information, please contact them directly.
-    For a list of activities, please refer to the table below:
-  </p>
+  <main>
+    <h1>Explore the Great Cliffs</h1>
+    <h2>Where ocean air meets canyon trails</h2>
+    <p>
+      Welcome to the Great Cliffs—four unique regions carved by time and weather.
+      Plan a weekend escape or train for your next adventure along our ridgelines and beaches.
+    </p>
 
-  <!-- Table (add border="1" per assignment to make it visible for now) -->
-  <table border="1">
-    <caption>Activities at the Cliffs</caption>
-    <thead>
-      <tr>
-        <th>Activity</th>
-        <th>West Cliff</th>
-        <th>North Cliff</th>
-        <th>East Cliff</th>
-        <th>South Cliff</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Hiking</td>
-        <td>College Hikes</td>
-        <td>Family Fun</td>
-        <td>Treasure Trails</td>
-        <td>Canyon Explorer</td>
-      </tr>
-      <tr>
-        <td>Kayak</td>
-        <td>Western Kayak Meetup</td>
-        <td>Not Available</td>
-        <td>Youth Kayaking</td>
-        <td>Kayak Down</td>
-      </tr>
-      <tr>
-        <td>Skydiving</td>
-        <td>Seacliff Diving</td>
-        <td>Sky is the limit</td>
-        <td>Not Available</td>
-        <td>Sky Diving for Beginners</td>
-      </tr>
-      <tr>
-        <td>Biking</td>
-        <td>Bicycle for One</td>
-        <td>Not Available</td>
-        <td>Bike Meetup Group</td>
-        <td>Not Available</td>
-      </tr>
-      <tr>
-        <td>Camping</td>
-        <td>Youth Camp</td>
-        <td>Rent a Tent</td>
-        <td>Campground Adventure</td>
-        <td>Sunset Camping</td>
-      </tr>
-    </tbody>
-  </table>
-</main>
+    <h2>Plan your day</h2>
+    <p>
+      Hike, camp, bike, kayak, or simply relax at a scenic overlook.
+      Check the <a href="activities.html">Activities</a> page for schedules and vendors,
+      or <a href="contact.html">Contact</a> us for more info.
+    </p>
+  </main>
 
+  <section class="partners" aria-labelledby="partners-title">
+    <h2 id="partners-title">Our Partners</h2>
+    <div class="partner-grid">
+      <!-- Replace src filenames below with the real ones from partners.zip -->
+      <div class="partner"><img src="partners/partner-bustour.png" alt="Bus Tours"></div>
+      <div class="partner"><img src="partners/partner-cabinrental.png" alt="Cabin Rental"></div>
+      <div class="partner"><img src="partners/partner-campingadv.png" alt="Camping Adventures"></div>
+      <div class="partner"><img src="partners/partner-collegetours.png" alt="College Tours"></div>
+      <div class="partner"><img src="partners/partner-rentalbike.png" alt="Bike Rentals"></div>
+      <div class="partner"><img src="partners/partner-tourgroup.png" alt="Tour Group"></div>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; Great Cliffs</p>
+    <div class="footer-inner">
+      <div class="copyright">© Great Cliffs</div>
+      <div class="social" aria-label="Social links">
+        <a class="facebook" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="twitter" href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a class="instagram" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="youtube" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="disclaimer">This is a student demo site.</div>
   </footer>
 </body>
 </html>
