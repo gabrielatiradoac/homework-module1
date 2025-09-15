@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Great Cliffs</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="contact">
   <header>
     <nav>
       <a href="index.html">Home</a> |
@@ -14,70 +15,67 @@
     </nav>
 
     <!-- Requirement: image below the open <header> tag -->
-    <!-- Replace hero.jpg with an actual image filename from your images folder -->
-    <img src="images/hero.jpg" alt="Scenic cliff view over the ocean" width="1200" height="400">
 
-    <!-- Replace the placeholder <h3> with a logo <img> (scaled down by width only) -->
     <img src="images/logo.png" alt="Great Cliffs Logo" width="160">
   </header>
 
 <main>
-  <h1>Contacting Us</h1>
+<h1>Contacting Us</h1>
+<p>
+You can drop by the visitors information center at the cliff site that you plan on visiting. They are open
+7 days a week from 8.00AM to 5.00PM. You can also contact us directly if you need additional information about 
+the Cliffs, Hours of Operations, Facilities or questions about this site using one of the following:
+</p>
+    
+<div class="contactinfo">
+    <div class="phone">
+        <span>Phone:</span>
+        <span>(800)GCLIFFS</span>
+    </div>
+    <div class="email">
+        <span>Email:</span>
+        <span>info@greatcliffs.com</span>
+    </div>
+</div>
 
-  <!-- Paste this paragraph from content-w1d2.txt -->
-  <p>
-    If you need more information about the Cliffs, Hours of Operations, Facilities or questions about this site,
-    please contact us bu using one of the following:
-  </p>
-
-  <h2>Phone:</h2>
-  <p>(800)GCLIFFS</p>
-
-  <h2>Email:</h2>
-  <p>info@greatcliffs.com</p>
-
-  <h2>Fill Out This Form:</h2>
-  <form action="/contact" method="post">
-    <div>
-      <label for="fullname">Full name</label><br>
-      <input id="fullname" name="fullname" type="text" placeholder="Enter your full name" required>
+<form action="/contact" method="post">  
+<fieldset>  
+    <legend>Contact Form</legend>
+    <div class="textbox">
+        <label>Name:</label> 
+        <input type="text" name="name" placeholder="John Doe">  
+        <label>Email:</label>  
+        <input type="email" name="email" placeholder="johndoe@gmail.com"> 
+        <label>Phone:</label>
+        <input type="text" name="phone" placeholder="xxx-xxx-xxxx"> 
+    </div>
+    
+    <div class="radios">
+        <label>How should we contact you?</label>  
+        <input type="radio" name="contact" value="email" checked>Email 
+        <input type="radio" name="contact" value="phone">Phone
     </div>
 
-    <div>
-      <label for="email">Email</label><br>
-      <input id="email" name="email" type="email" placeholder="Enter your email" required>
+    <div class="selectmenu">
+        <label>Which Cliff are you inquiring?</label>  
+        <select>
+            <option>West Cliff</option>
+            <option>North Cliff</option>
+            <option>East Cliff</option>
+            <option>South Cliff</option>
+        </select>
+    </div>
+    
+    <div class="commentbox">
+        <label>How did you hear about us:</label>  
+        <textarea></textarea>
     </div>
 
-    <div>
-      <label for="phone">Phone</label><br>
-      <input id="phone" name="phone" type="tel" placeholder="Enter your phone">
-    </div>
-
-    <fieldset>
-      <legend>How should we contact you?</legend>
-      <label><input type="radio" name="contact_pref" value="email" checked> Email</label>
-      <label><input type="radio" name="contact_pref" value="phone"> Phone</label>
-    </fieldset>
-
-    <div>
-      <label for="cliff">Which Cliff are you inquiring?</label><br>
-      <select id="cliff" name="cliff">
-        <option>West Cliff</option>
-        <option>North Cliff</option>
-        <option>East Cliff</option>
-        <option>South Cliff</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="referral">How did you hear about us:</label><br>
-      <input id="referral" name="referral" type="text" placeholder="Friend, social, search, etc.">
-    </div>
-
-    <div style="margin-top:8px;">
-      <button type="submit">Send</button>
-    </div>
-  </form>
+    <div class="button">
+        <input type="submit" value="Inquire">
+    </div> 
+</fieldset>  
+</form>
 </main>
 
 
