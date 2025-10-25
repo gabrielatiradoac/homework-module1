@@ -1,96 +1,229 @@
-/* --------- BASE --------- */
+
+/* =====================================
+   GREAT CLIFFS — Polished Site Styles
+   ===================================== */
+
+/* ----- Tokens ----- */
 :root{
+  --brand:#4977d1;
   --accent:#9ed034;
-  --brand:#4977D1;
-  --ink:#222;
-  --muted:#667085;
-  --bg:#fff;
-  --panel:#f5f7f9;
-  --line:#e3e7ef;
+  --ink:#172134;
+  --muted:#5a6473;
+  --bg:#ffffff;
+  --panel:#f8fafc;
+  --line:#e6e9ef;
+  --radius:14px;
+  --shadow:0 10px 28px rgba(22,32,50,.10);
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;color:#333;background:var(--bg)}
+html{scroll-behavior:smooth}
+body{
+  color:var(--ink);
+  background:var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  line-height:1.6;
+  /* Better default text sizing */
+  font-size:16px;
+}
 
-/* --------- HEADER (shared) --------- */
+/* ----- Layout helpers ----- */
+.container{width:min(1100px,92%);margin:0 auto}
+.stack > * + *{margin-top:1rem}
+.cluster{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* =========================
+   HEADER / HERO
+   ========================= */
 header{
-  min-height:320px; position:relative; color:#fff; 
-  background-size:cover; background-position:center;
+  position:relative;
+  min-height:300px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:18px 0 40px;
+  color:#fff;
+  background-size:cover;
+  background-position:center;
 }
-.header-box{
-  background:rgba(0,0,0,.8);
-  width:min(960px,92%); margin:20px auto 0; padding:16px 20px;
-  display:grid; grid-template-columns:160px 1fr; gap:12px; align-items:center;
-  border-radius:12px;
+/* Hero images per page */
+#home header, #Home header{background-image:url("images/cliff_ocean.jpg")}
+#activities header{background-image:url("images/cliff_rock.jpg")}
+#contact header{background-image:url("images/runfly.jpg")}
+
+/* Softer overlay for readability without crushing the image */
+header::before{pointer-events:none; 
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.25) 45%, rgba(0,0,0,.45) 100%);
 }
-.logo img{width:160px;height:auto;display:block}
 
-/* page-specific header images */
-#home header{   background-image:url("images/cliff_ocean.jpg"); }
-#activities header{ background-image:url("images/cliff_rock.jpg"); }
-#contact header{    background-image:url("images/runfly.jpg"); }
+/* Top chrome */
+.header-inner{z-index:3; 
+  position:relative; z-index:1;
+  width:min(1100px,92%);
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:18px;
+  align-items:center;
+  border-radius:var(--radius);
+  padding:10px 16px;
+  background:rgba(0,0,0,.30);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:saturate(140%) blur(4px);
+}
 
-/* --------- NAV --------- */
-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;justify-content:flex-end;align-items:center;border-left:15px solid rgba(255,255,255,.15);padding-left:18px}
-nav a{color:#e8eef6;text-decoration:none;font-weight:600;letter-spacing:.2px;padding:6px 4px;border-bottom:2px solid transparent;transition:color .15s, border-color .15s}
-nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-nav a.active{color:var(--accent);border-bottom-color:var(--accent);cursor:default}
+/* Logo */
+.logo-link img{
+  width:170px; height:auto; display:block;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));
+}
 
-/* --------- MAIN --------- */
-main{width:min(960px,92%);margin:22px auto;line-height:1.55}
-main h1{margin:8px 0 10px;color:var(--accent);font-size:clamp(28px,4vw,42px)}
-main h2{margin:20px 0 8px;color:var(--ink);font-size:clamp(18px,2.5vw,24px)}
-main p{margin:0 0 12px;max-width:70ch}
+/* Navigation */
+nav{display:flex;gap:22px;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+nav a{display:inline-block; position:relative; z-index:4; 
+  color:#f1f6ff;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.2px;
+  padding:6px 2px;
+  border-bottom:2px solid transparent;
+  transition:color .15s ease, border-color .15s ease, transform .15s ease;
+}
+nav a:hover{color:var(--accent); border-bottom-color:var(--accent); transform:translateY(-1px)}
 
-/* --------- PARTNERS --------- */
-section.partners{width:min(960px,92%);margin:24px auto;text-align:center}
-.partner-grid{display:grid;grid-template-columns:repeat(6,minmax(60px,1fr));gap:16px;justify-items:center;align-items:center}
-.partner{width:110px;height:110px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.partner img{width:70%;height:70%;object-fit:contain}
+/* Active link based on body id + href */
+#home nav a[href$="index.html"], #Home nav a[href$="index.html"],
+#activities nav a[href$="activities.html"],
+#contact nav a[href$="contact.html"]{
+  color:#d9ff9a;
+  border-bottom-color:#d9ff9a;
+}
 
-/* --------- FOOTER --------- */
-footer{border-top:1px solid var(--line);margin-top:28px;padding:14px 0 48px}
-.footer-inner{width:min(960px,92%);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-.copyright{color:var(--muted)}
-.social{display:flex;gap:10px}
-.social a{width:36px;height:36px;display:inline-grid;place-items:center;border-radius:50%;color:#fff;text-decoration:none;transition:transform .12s ease, filter .12s ease}
-.social a:hover{transform:translateY(-1px);filter:brightness(1.1)}
-.social .facebook{background:#1877f2}.social .twitter{background:#1da1f2}.social .instagram{background:#e4405f}.social .youtube{background:#ff0000}
-.disclaimer{width:min(960px,92%);margin:8px auto 0;color:#98a2b3;font-size:.9rem}
+/* =========================
+   MAIN CONTENT
+   ========================= */
+main{width:min(1100px,92%); margin:-36px auto 40px; position:relative; z-index:2}
+.card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:22px;
+}
+main h1{
+  font-size:clamp(30px,4.8vw,46px);
+  line-height:1.1;
+  color:var(--brand);
+  margin:14px 0 10px;
+  letter-spacing:.2px;
+}
+main h2{font-size:clamp(22px,3.5vw,28px); margin:18px 0 8px; color:#0f1a2b}
+main p{max-width:72ch; color:var(--ink)}
+main img{max-width:100%; height:auto; border-radius:12px}
 
-/* --------- ACTIVITIES TABLE --------- */
-#activities table{width:100%;margin:16px auto 24px;border-collapse:collapse;background:#fff}
+/* Links in body text */
+main a{color:var(--brand);text-underline-offset:2px}
+main a:hover{color:#365fb8}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer{
+  border-top:1px solid var(--line);
+  background:linear-gradient(0deg,#f7f9fc 0, transparent 70%);
+  padding:22px 0 46px;
+}
+footer p{color:var(--muted); text-align:center; margin:0}
+
+/* =========================
+   ACTIVITIES (TABLE)
+   ========================= */
+#activities table{
+  width:100%; border-collapse:collapse;
+  margin:18px 0 26px;
+  background:#fff; border-radius:14px; overflow:hidden;
+  box-shadow:var(--shadow); border:1px solid var(--line);
+}
 #activities caption{
-  background:var(--brand); color:#fff; height:54px; font-weight:700; font-size:1.05rem;
-  text-transform:uppercase; letter-spacing:.5px; line-height:54px; /* pushes text down a bit */
+  background:var(--brand); color:#fff; font-weight:800;
+  letter-spacing:.5px; text-transform:uppercase;
+  height:56px; line-height:56px;
 }
-#activities thead th{background:var(--accent); color:#111; text-align:center; padding:10px}
-#activities tbody td{background:#fff; text-align:center; padding:12px}
-#activities th, #activities td{border:1px solid var(--line); vertical-align:middle}
-#activities tbody td:first-child, 
-#activities thead th:first-child{
-  background:#f2f9ff; text-align:left; font-weight:700; color:#111;
+#activities thead th{
+  background:var(--accent);
+  color:#0b141f; text-align:center; padding:12px 10px;
+  font-weight:800; border-bottom:1px solid var(--line);
 }
+#activities tbody td{
+  text-align:center; padding:14px 10px; border-bottom:1px solid var(--line);
+}
+#activities tbody tr:nth-child(even) td{background:var(--panel)}
+#activities tbody td:first-child, #activities thead th:first-child{
+  background:#eef4ff; text-align:left; font-weight:800; color:#0b141f;
+}
+#activities tbody tr:hover td{background:#f7fbff}
 
-/* --------- CONTACT FORM --------- */
-#contact form{width:min(720px,100%); background:#fff; border:1px solid var(--line); padding:18px; border-radius:12px}
-#contact form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-#contact label{display:block;font-weight:700;margin:10px 0 6px;color:#111}
-#contact input[type="text"],
-#contact input[type="email"],
-#contact input[type="tel"],
-#contact select,
-#contact textarea{
-  width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; font:inherit;
+/* =========================
+   CONTACT (FORM)
+   ========================= */
+#contact .contactinfo{
+  display:grid; grid-template-columns:1fr 1fr; gap:10px; width:min(760px,100%);
+  margin:6px 0 14px;
+}
+#contact .contactinfo span:first-child{font-weight:800; margin-right:8px; color:#111}
+
+#contact form{
+  width:min(760px,100%); background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);
+}
+#contact fieldset{border:1px dashed var(--line); border-radius:12px; padding:14px}
+#contact legend{font-weight:800; color:#111}
+#contact .textbox{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+#contact label{display:block; font-weight:700; margin:10px 0 6px; color:#111}
+#contact input[type="text"], #contact input[type="email"],
+#contact select, #contact textarea{
+  width:100%; padding:12px 14px; border:1px solid var(--line);
+  border-radius:10px; font:inherit; background:#fff;
 }
 #contact textarea{min-height:120px; resize:vertical}
-#contact fieldset{border:1px dashed var(--line); padding:10px 12px; border-radius:10px; margin:12px 0}
-#contact legend{font-weight:700; color:#111}
-#contact .button{margin-top:12px; display:flex; gap:10px}
-#contact .button button{
-  appearance:none; border:none; border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer; color:#fff; background:var(--brand)
+#contact .button{margin-top:14px; display:flex; gap:10px}
+#contact input[type="submit"]{
+  appearance:none; border:none; border-radius:10px; padding:12px 16px;
+  font-weight:800; cursor:pointer; color:#fff; background:var(--brand);
+  transition:transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  box-shadow:0 8px 16px rgba(73,119,209,.25);
 }
-#contact .button button.alt{background:var(--accent); color:#0b0b0b}
-@media (max-width:700px){
-  #contact form .row{grid-template-columns:1fr}
+#contact input[type="submit"]:hover{transform:translateY(-1px); filter:brightness(1.05)}
+#contact input[type="submit"]:active{transform:translateY(0) scale(.98)}
+
+/* Focus ring */
+:where(input,select,textarea,button):focus{
+  outline:3px solid color-mix(in oklab, var(--brand) 60%, white);
+  outline-offset:1px;
+}
+
+/* =========================
+   HOME — DIGITAL CLOCK
+   ========================= */
+#home .home-clock, #Home .home-clock{ margin:22px 0 }
+#home .clock-card, #Home .clock-card{
+  display:grid; grid-template-columns:auto auto 1fr;
+  align-items:baseline; gap:12px 18px;
+  padding:18px 20px; border-radius:16px;
+  background: linear-gradient(0deg, rgba(251,215,139,1) 0%, rgba(118,213,245,1) 100%);
+  box-shadow:var(--shadow); border:1px solid rgba(0,0,0,.06);
+  width:max-content; max-width:100%;
+  font-family: Arial, Helvetica, sans-serif; color:#3a3a3a;
+}
+#home .clock-time, #Home .clock-time{ font-size:clamp(28px,6vw,48px); font-weight:800; letter-spacing:1px; line-height:1 }
+#home .clock-ampm, #Home .clock-ampm{ font-size:clamp(14px,2.5vw,18px); font-weight:900; color:#125688; align-self:center }
+#home .clock-tz, #Home .clock-tz{ font-size:clamp(12px,2vw,16px); justify-self:start; color:#125688; opacity:.9 }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width:860px){
+  .header-inner{z-index:3; grid-template-columns:1fr; gap:10px}
+  main{margin-top:-28px}
+  #contact .textbox{grid-template-columns:1fr}
+  #contact .contactinfo{grid-template-columns:1fr}
 }
