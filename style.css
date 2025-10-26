@@ -227,3 +227,10 @@ footer p{color:var(--muted); text-align:center; margin:0}
   #contact .textbox{grid-template-columns:1fr}
   #contact .contactinfo{grid-template-columns:1fr}
 }
+/* Contact: visually indicate disabled submit (W4D1) */
+#contact input[type="submit"][disabled]{
+  background: none;
+  color: #666;
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+}

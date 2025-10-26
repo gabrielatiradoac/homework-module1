@@ -75,6 +75,12 @@ the Cliffs, Hours of Operations, Facilities or questions about this site using o
         <input type="submit" value="Inquire">
     </div> 
 </fieldset>  
+<div class="code-verify">
+  <label for="code_input">Enter the code shown:</label>
+  <input type="text" id="code_input" maxlength="8" placeholder="XXXXXXXX" />
+  <span id="code_display" aria-live="polite"></span>
+</div>
+
 </form>
 </main>
 
@@ -118,6 +124,8 @@ const items = partnerLogos.map(p => {
 const partnersUL = document.getElementById('partners');
 if (partnersUL) partnersUL.innerHTML = items.join('');
 </script>
+<script src="js/site_scripts.js"></script>
+<script src="js/randomcodes.js"></script>
 
 </body>
 </html>
