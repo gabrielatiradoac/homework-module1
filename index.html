@@ -81,5 +81,41 @@
       setInterval(currentTime, 1000);
     })();
   </script>
+<!-- Deactivated partners list for JS conversion:
+<ul id="partners" class="partners">
+  <li><img src="partners/partner-bustour.png" alt="Bus Tours"></li>
+  <li><img src="partners/partner-cabinrental.png" alt="Cabin Rental"></li>
+  <li><img src="partners/partner-campingadv.png" alt="Camping Adventures"></li>
+  <li><img src="partners/partner-collegetours.png" alt="College Tours"></li>
+  <li><img src="partners/partner-rentalbike.png" alt="Rental Bike"></li>
+  <li><img src="partners/partner-tourgroup.png" alt="Tour Group"></li>
+</ul>
+-->
+
+<!-- Empty UL to be populated by JS -->
+<ul id="partners" class="partners"></ul>
+
+<script>
+// Data: image files + accessible alt text
+const partnerLogos = [
+  { file: 'partner-bustour.png',      alt: 'Bus Tours' },
+  { file: 'partner-cabinrental.png',  alt: 'Cabin Rental' },
+  { file: 'partner-campingadv.png',   alt: 'Camping Adventures' },
+  { file: 'partner-collegetours.png', alt: 'College Tours' },
+  { file: 'partner-rentalbike.png',   alt: 'Rental Bike' },
+  { file: 'partner-tourgroup.png',    alt: 'Tour Group' }
+];
+
+// Build the <li><img></li> items
+const items = partnerLogos.map(p => {
+  const src = `partners/${p.file}`;
+  return `<li><img src="${src}" alt="${p.alt}" loading="lazy"></li>`;
+});
+
+// Inject into the <ul id="partners">
+const partnersUL = document.getElementById('partners');
+if (partnersUL) partnersUL.innerHTML = items.join('');
+</script>
+
 </body>
 </html>
